@@ -1,0 +1,11 @@
+apiVersion: bitwarden.saagie.io/v1alpha1
+kind: Folder
+metadata:
+  annotations:
+    meta.upbound.io/example-id: bitwarden/v1alpha1/folder
+  labels:
+    testing.upbound.io/example-name: cloud_credentials
+  name: cloud-credentials
+spec:
+  forProvider:
+    name: My Cloud Credentials

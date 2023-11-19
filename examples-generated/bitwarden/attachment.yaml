@@ -1,0 +1,30 @@
+apiVersion: bitwarden.saagie.io/v1alpha1
+kind: Attachment
+metadata:
+  annotations:
+    meta.upbound.io/example-id: bitwarden/v1alpha1/attachment
+  labels:
+    testing.upbound.io/example-name: vpn_config
+  name: vpn-config
+spec:
+  forProvider:
+    file: ./vpn-config.txt
+    itemId: ${bitwarden_item_login.vpn_credentials.id}
+
+---
+
+apiVersion: item.bitwarden.saagie.io/v1alpha1
+kind: Login
+metadata:
+  annotations:
+    meta.upbound.io/example-id: bitwarden/v1alpha1/attachment
+  labels:
+    testing.upbound.io/example-name: vpn_credentials
+  name: vpn-credentials
+spec:
+  forProvider:
+    name: VPN Admin Access
+    usernameSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system

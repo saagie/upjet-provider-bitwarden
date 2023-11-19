@@ -1,0 +1,229 @@
+name: maxlaverse/bitwarden
+resources:
+    bitwarden_attachment:
+        subCategory: ""
+        description: (EXPERIMENTAL) Manages a Vault item's attachment.
+        name: bitwarden_attachment
+        title: bitwarden_attachment Resource - terraform-provider-bitwarden
+        examples:
+            - name: vpn_config
+              manifest: |-
+                {
+                  "file": "./vpn-config.txt",
+                  "item_id": "${bitwarden_item_login.vpn_credentials.id}"
+                }
+              references:
+                item_id: bitwarden_item_login.vpn_credentials.id
+              dependencies:
+                bitwarden_item_login.vpn_credentials: |-
+                    {
+                      "name": "VPN Admin Access",
+                      "username": "admin"
+                    }
+        argumentDocs:
+            file: (String) Path to the content of the attachment.
+            file_name: (String) File name
+            id: (String) Identifier.
+            item_id: (String) Identifier of the item the attachment belongs to
+            size: (String) Size in bytes
+            size_name: (String) Size as string
+            url: (String) URL
+        importStatements:
+            - |-
+              # Find the identifier of the resource and its attachment you want to import:
+              #
+              # $ bw list items --search "SSH Credentials" | jq  '.[]'
+              # ? Master password: [hidden]
+              #
+              # > {
+              # >   "object": "item",
+              # >   "id": "59575167-4d36-5a58-466e-d9021926df8a",
+              # >   [...]
+              # >   "name": "My Top Secret SSH Credentials",
+              # >   "attachments": [
+              # >     {
+              # >       id": "4d6a41364d6a4dea8ddb1a",
+              # >       "fileName": "ssh_private.key",
+              # >       "size": "1743",
+              # >       "sizeName": "1.74 KB",
+              # >       "url": "https://vault.bitwarden.com/attachments/59575167-4d36-5a58-466e-d9021926df8a/4d6a41364d6a4dea8ddb1a"
+              # >     }
+              # >   ],
+              # > }
+
+              resource "bitwarden_attachment" "ssh_private" {
+                # ...instance configuration...
+              }
+
+              # Provide both identifiers to Terraform in the form of '<item_id>/<attachment_id>'
+              $ terraform import bitwarden_attachment.ssh_private 59575167-4d36-5a58-466e-d9021926df8a/4d6a41364d6a4dea8ddb1a
+    bitwarden_folder:
+        subCategory: ""
+        description: Manages a folder.
+        name: bitwarden_folder
+        title: bitwarden_folder Resource - terraform-provider-bitwarden
+        examples:
+            - name: cloud_credentials
+              manifest: |-
+                {
+                  "name": "My Cloud Credentials"
+                }
+        argumentDocs:
+            id: (String) Identifier.
+            name: (String) Name.
+        importStatements:
+            - |-
+              # Find the identifier of the resource you want to import:
+              #
+              # $ bw list folders --search "My Cloud Credentials" | jq  '.[] .id'
+              # ? Master password: [hidden]
+              #
+              # > "94d858f7-03b9-4897-bee1-9af465988932"
+              #
+              resource "bitwarden_folder" "cloud_credentials" {
+                name = "My Cloud Credentials"
+              }
+
+              # Provide this identifier to Terraform:
+              $ terraform import bitwarden_folder.cloud_credentials 94d858f7-03b9-4897-bee1-9af465988932
+    bitwarden_item_login:
+        subCategory: ""
+        description: Manages a Vault Login item.
+        name: bitwarden_item_login
+        title: bitwarden_item_login Resource - terraform-provider-bitwarden
+        examples:
+            - name: administrative-user
+              manifest: |-
+                {
+                  "collection_ids": [
+                    "c74d6067-50b0-4427-bec8-483f3270fde3"
+                  ],
+                  "favorite": true,
+                  "field": [
+                    {
+                      "name": "this-is-a-text-field",
+                      "text": "text-value"
+                    },
+                    {
+                      "boolean": true,
+                      "name": "this-is-a-boolean-field"
+                    },
+                    {
+                      "hidden": "text-value",
+                      "name": "this-is-a-hidden-field"
+                    }
+                  ],
+                  "folder_id": "3b985a2f-0eed-461e-a5ac-adf5015b00c4",
+                  "name": "Service Administrator",
+                  "notes": "\u003csensitive\u003e",
+                  "organization_id": "54421e78-95cb-40c4-a257-17231a7b6207",
+                  "password": "\u003csensitive\u003e",
+                  "totp": "\u003csensitive\u003e",
+                  "username": "admin"
+                }
+        argumentDocs:
+            attachments: (List of Object) List of item attachments. (see below for nested schema)
+            boolean: (Boolean) Value of a boolean field.
+            collection_ids: (List of String) Identifier of the collections the item belongs to.
+            creation_date: (String) Date the item was created.
+            deleted_date: (String) Date the item was deleted.
+            favorite: (Boolean) Mark as a Favorite to have item appear at the top of your Vault in the UI.
+            field: (Block List) Extra fields. (see below for nested schema)
+            file_name: (String)
+            folder_id: (String) Identifier of the folder.
+            hidden: (String) Value of a hidden text field.
+            id: (String) Identifier.
+            linked: (String) Value of a linked field.
+            match: (String) URI Match
+            name: (String) Name.
+            notes: (String, Sensitive) Notes.
+            organization_id: (String) Identifier of the organization.
+            password: (String, Sensitive) Login password.
+            reprompt: (Boolean) Require master password “re-prompt” when displaying secret in the UI.
+            revision_date: (String) Last time the item was updated.
+            size: (String)
+            size_name: (String)
+            text: (String) Value of a text field.
+            totp: (String, Sensitive) Verification code.
+            uri: (Block List) URI. (see below for nested schema)
+            url: (String)
+            username: (String, Sensitive) Login username.
+            value: (String) URI Value
+        importStatements:
+            - |-
+              # Find the identifier of the resource you want to import:
+              #
+              # $ bw list items --search "Mysql Root Credentials" | jq  '.[] .id'
+              # ? Master password: [hidden]
+              #
+              # > "ec4e447f-9aed-4203-b834-c8f3848828f7"
+              #
+
+              # Provide this identifier to Terraform:
+              $ terraform import bitwarden_item_login.administrative-user ec4e447f-9aed-4203-b834-c8f3848828f7
+    bitwarden_item_secure_note:
+        subCategory: ""
+        description: Manages a Vault Secure Note item.
+        name: bitwarden_item_secure_note
+        title: bitwarden_item_secure_note Resource - terraform-provider-bitwarden
+        examples:
+            - name: exampleservice-configuration
+              manifest: |-
+                {
+                  "collection_ids": [
+                    "c74d6067-50b0-4427-bec8-483f3270fde3"
+                  ],
+                  "favorite": true,
+                  "field": [
+                    {
+                      "name": "this-is-a-text-field",
+                      "text": "text-value"
+                    },
+                    {
+                      "boolean": true,
+                      "name": "this-is-a-boolean-field"
+                    },
+                    {
+                      "hidden": "text-value",
+                      "name": "this-is-a-hidden-field"
+                    }
+                  ],
+                  "folder_id": "3b985a2f-0eed-461e-a5ac-adf5015b00c4",
+                  "name": "ExampleService Configuration",
+                  "notes": "[global]\nsecret = \"\u003csensitive\u003e\"\n",
+                  "organization_id": "54421e78-95cb-40c4-a257-17231a7b6207"
+                }
+        argumentDocs:
+            attachments: (List of Object) List of item attachments. (see below for nested schema)
+            boolean: (Boolean) Value of a boolean field.
+            collection_ids: (List of String) Identifier of the collections the item belongs to.
+            creation_date: (String) Date the item was created.
+            deleted_date: (String) Date the item was deleted.
+            favorite: (Boolean) Mark as a Favorite to have item appear at the top of your Vault in the UI.
+            field: (Block List) Extra fields. (see below for nested schema)
+            file_name: (String)
+            folder_id: (String) Identifier of the folder.
+            hidden: (String) Value of a hidden text field.
+            id: (String) Identifier.
+            linked: (String) Value of a linked field.
+            name: (String) Name.
+            notes: (String, Sensitive) Notes.
+            organization_id: (String) Identifier of the organization.
+            reprompt: (Boolean) Require master password “re-prompt” when displaying secret in the UI.
+            revision_date: (String) Last time the item was updated.
+            size: (String)
+            size_name: (String)
+            text: (String) Value of a text field.
+            url: (String)
+        importStatements:
+            - |-
+              # Find the identifier of the resource you want to import:
+              #
+              # $ bw list items --search "SSH Private Key" | jq  '.[] .id'
+              # ? Master password: [hidden]
+              #
+              # > "a9e19f26-1b8c-4568-bc09-191e2cf56ed6"
+              #
+
+              # Provide this identifier to Terraform:
+              $ terraform import bitwarden_item_secure_note.ssh-private-key a9e19f26-1b8c-4568-bc09-191e2cf56ed6

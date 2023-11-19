@@ -1,0 +1,27 @@
+apiVersion: item.bitwarden.saagie.io/v1alpha1
+kind: SecureNote
+metadata:
+  annotations:
+    meta.upbound.io/example-id: item/v1alpha1/securenote
+  labels:
+    testing.upbound.io/example-name: exampleservice-configuration
+  name: exampleservice-configuration
+spec:
+  forProvider:
+    collectionIds:
+    - c74d6067-50b0-4427-bec8-483f3270fde3
+    favorite: true
+    field:
+    - name: this-is-a-text-field
+      text: text-value
+    - boolean: true
+      name: this-is-a-boolean-field
+    - hidden: text-value
+      name: this-is-a-hidden-field
+    folderId: 3b985a2f-0eed-461e-a5ac-adf5015b00c4
+    name: ExampleService Configuration
+    notesSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    organizationId: 54421e78-95cb-40c4-a257-17231a7b6207
