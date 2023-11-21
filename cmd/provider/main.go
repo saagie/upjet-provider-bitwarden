@@ -26,12 +26,12 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/cache"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	"github.com/saagie/upjet-provider-bitwarden/apis"
-	"github.com/saagie/upjet-provider-bitwarden/apis/v1alpha1"
-	"github.com/saagie/upjet-provider-bitwarden/config"
-	"github.com/saagie/upjet-provider-bitwarden/internal/clients"
-	"github.com/saagie/upjet-provider-bitwarden/internal/controller"
-	"github.com/saagie/upjet-provider-bitwarden/internal/features"
+	"saagie.io/provider-bitwarden/apis"
+	"saagie.io/provider-bitwarden/apis/v1alpha1"
+	"saagie.io/provider-bitwarden/config"
+	"saagie.io/provider-bitwarden/internal/clients"
+	"saagie.io/provider-bitwarden/internal/controller"
+	"saagie.io/provider-bitwarden/internal/features"
 )
 
 func main() {

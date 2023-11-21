@@ -15,7 +15,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/terraform"
 
-	"github.com/saagie/upjet-provider-bitwarden/apis/v1beta1"
+	"saagie.io/provider-bitwarden/apis/v1beta1"
 )
 
 const (

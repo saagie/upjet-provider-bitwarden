@@ -23,8 +23,8 @@ import (
 	"github.com/crossplane/upjet/pkg/terraform"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/saagie/upjet-provider-bitwarden/apis/bitwarden/v1alpha1"
-	features "github.com/saagie/upjet-provider-bitwarden/internal/features"
+	v1alpha1 "saagie.io/provider-bitwarden/apis/bitwarden/v1alpha1"
+	features "saagie.io/provider-bitwarden/internal/features"
 )
 
 // Setup adds a controller that reconciles Folder managed resources.

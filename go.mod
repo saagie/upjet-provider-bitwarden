@@ -1,4 +1,4 @@
-module github.com/saagie/upjet-provider-bitwarden
+module saagie.io/provider-bitwarden
 
 go 1.19
 

@@ -10,12 +10,12 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 
-	"github.com/saagie/upjet-provider-bitwarden/config/bitwarden"
+	"saagie.io/provider-bitwarden/config/bitwarden"
 )
 
 const (
 	resourcePrefix = "bitwarden"
-	modulePath     = "github.com/saagie/upjet-provider-bitwarden"
+	modulePath     = "saagie.io/provider-bitwarden"
 )
 
 //go:embed schema.json

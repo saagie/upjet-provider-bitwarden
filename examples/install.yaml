@@ -3,4 +3,4 @@ kind: Provider
 metadata:
   name: provider-bitwarden
 spec:
-  package: saagie/upjet-provider-bitwarden:v0.1.0
+  package: saagie/provider-bitwarden:v0.1.0

@@ -8,9 +8,9 @@ Bitwarden API.
 ## Getting Started
 
 Install the provider by using the following command after changing the image tag
-to the [latest release](https://marketplace.upbound.io/providers/saagie/upjet-provider-bitwarden):
+to the [latest release](https://marketplace.upbound.io/providers/saagie/provider-bitwarden):
 ```
-up ctp provider install saagie/upjet-provider-bitwarden:v0.1.0
+up ctp provider install saagie/provider-bitwarden:v0.1.0
 ```
 
 Alternatively, you can use declarative installation:
@@ -21,13 +21,13 @@ kind: Provider
 metadata:
   name: provider-bitwarden
 spec:
-  package: saagie/upjet-provider-bitwarden:v0.1.0
+  package: saagie/provider-bitwarden:v0.1.0
 EOF
 ```
 
 Notice that in this example Provider resource is referencing ControllerConfig with debug enabled.
 
-You can see the API reference [here](https://doc.crds.dev/github.com/saagie/upjet-provider-bitwarden).
+You can see the API reference [here](https://doc.crds.dev/saagie.io/provider-bitwarden).
 
 ## Developing
 
@@ -57,4 +57,4 @@ make build
 ## Report a Bug
 
 For filing bugs, suggesting improvements, or requesting new features, please
-open an [issue](https://github.com/saagie/upjet-provider-bitwarden/issues).
+open an [issue](https://saagie.io/provider-bitwarden/issues).

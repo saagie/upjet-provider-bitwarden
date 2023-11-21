@@ -11,7 +11,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/pipeline"
 
-	"github.com/saagie/upjet-provider-bitwarden/config"
+	"saagie.io/provider-bitwarden/config"
 )
 
 func main() {

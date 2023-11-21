@@ -14,10 +14,10 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/saagie/upjet-provider-bitwarden/apis/bitwarden/v1alpha1"
-	v1alpha1item "github.com/saagie/upjet-provider-bitwarden/apis/item/v1alpha1"
-	v1alpha1apis "github.com/saagie/upjet-provider-bitwarden/apis/v1alpha1"
-	v1beta1 "github.com/saagie/upjet-provider-bitwarden/apis/v1beta1"
+	v1alpha1 "saagie.io/provider-bitwarden/apis/bitwarden/v1alpha1"
+	v1alpha1item "saagie.io/provider-bitwarden/apis/item/v1alpha1"
+	v1alpha1apis "saagie.io/provider-bitwarden/apis/v1alpha1"
+	v1beta1 "saagie.io/provider-bitwarden/apis/v1beta1"
 )
 
 func init() {

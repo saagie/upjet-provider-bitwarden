@@ -9,11 +9,11 @@ import (
 
 	"github.com/crossplane/upjet/pkg/controller"
 
-	attachment "github.com/saagie/upjet-provider-bitwarden/internal/controller/bitwarden/attachment"
-	folder "github.com/saagie/upjet-provider-bitwarden/internal/controller/bitwarden/folder"
-	login "github.com/saagie/upjet-provider-bitwarden/internal/controller/item/login"
-	securenote "github.com/saagie/upjet-provider-bitwarden/internal/controller/item/securenote"
-	providerconfig "github.com/saagie/upjet-provider-bitwarden/internal/controller/providerconfig"
+	attachment "saagie.io/provider-bitwarden/internal/controller/bitwarden/attachment"
+	folder "saagie.io/provider-bitwarden/internal/controller/bitwarden/folder"
+	login "saagie.io/provider-bitwarden/internal/controller/item/login"
+	securenote "saagie.io/provider-bitwarden/internal/controller/item/securenote"
+	providerconfig "saagie.io/provider-bitwarden/internal/controller/providerconfig"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to

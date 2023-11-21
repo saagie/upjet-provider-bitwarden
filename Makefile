@@ -1,8 +1,8 @@
 # ====================================================================================
 # Setup Project
 
-PROJECT_NAME ?= upjet-provider-bitwarden
-PROJECT_REPO ?= github.com/saagie/$(PROJECT_NAME)
+PROJECT_NAME ?= provider-bitwarden
+PROJECT_REPO ?= saagie.io/$(PROJECT_NAME)
 
 export TERRAFORM_VERSION ?= 1.2.1
 
